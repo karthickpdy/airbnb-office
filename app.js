@@ -9,6 +9,11 @@ angular.module('airbnb', ['angular.filter','ui.router'])
           url: '/home',
           templateUrl: '/home.html',
           controller: 'MainCtrl'
+        })
+        .state('listings', {
+          url: '/listings/{id}',
+          templateUrl: '/listings.html',
+          controller: 'ListingsCtrl'
         });
 
       $urlRouterProvider.otherwise('home');
@@ -16,7 +21,7 @@ angular.module('airbnb', ['angular.filter','ui.router'])
     .factory('listings', [function(){
       var o = {
         listings: [
-          {name : 'listings 1', city : "Chennai"}, 
+          {name : 'listings 1', city : "Chennai", featured : true ,ameneties : ["canteen","internet"]}, 
           {name : 'listings 1', city : "Chennai", featured : false}, 
           {name : 'listings 1', city : "Mumbai"}, 
           {name : 'listings 1', city : "Delhi"}, 
@@ -37,4 +42,9 @@ angular.module('airbnb', ['angular.filter','ui.router'])
             };
 
         }
-    ]);
+    ])
+    .controller('ListingsCtrl', ['$scope','$stateParams','listings',
+        function($scope, $stateParams, listings){        
+            $scope.listing = listings.listings[$stateParams.id];
+        }]
+    );
