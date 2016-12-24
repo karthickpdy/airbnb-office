@@ -1,0 +1,17 @@
+<!-- <script type="text/ng-template" id="/listings.html"> -->
+	<div class="page-header">
+		<h3>
+			{{listing.name}} 
+			<span ng-show="listing.featured">
+				featured
+			</span>
+		</h3>
+	</div>
+
+	<div ng-repeat="amenity in listing.ameneties">
+		<span class="glyphicon glyphicon-ok"></span>        
+		<span style="font-size:20px; margin-left:10px;">
+			{{amenity}}
+		</span>
+	</div>
+<!-- </script> -->

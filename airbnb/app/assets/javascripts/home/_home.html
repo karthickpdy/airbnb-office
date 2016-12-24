@@ -1,0 +1,27 @@
+<!-- <script type="text/ng-template" id="/home.html"> -->
+	<div class="page-header">
+		<h1>Airbnb</h1>
+	</div>
+
+	<div ng-repeat="(key,value) in listings | groupBy: 'city'">
+		<div>City : {{key}}</div>
+		<div ng-repeat="listing in value">          
+			{{listing.name}} -> {{listing.city}}
+			<div ng-show="listing.featured">
+				featured
+			</div>
+			<span>
+				<a ng-href="#!/listings/{{$index}}" target="_self">Listing</a>
+			</span>
+		</div>
+	</div>
+	<form ng-submit="addPost()" style="margin-top:30px;">
+		<h3>Add new listing</h3>
+
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Title" ng-model="name"></input>
+		</div>
+		<button type="submit" class="btn btn-primary">Add Listing</button>
+	</form>
+<!-- </script>   -->
+
