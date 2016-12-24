@@ -1,75 +1,9 @@
 <html>
   <head>
     <title>Airbnb!</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
     <script src="app.js"></script>
   </head>
 
 
 
-  <body ng-app="airbnb" ng-controller="MainCtrl">    
-    <div class="row">
-      <div class ="col-md-6 col-md-offset-3">
-       <ui-view></ui-view>
-      </div>
-    </div>
-  </body>
-
-    
-    <script type="text/ng-template" id="/home.html">
-        <div class="page-header">
-        <h1>Airbnb</h1>
-        </div>
-
-        <div ng-repeat="(key,value) in listings | groupBy: 'city'">
-          <div>City : {{key}}</div>
-          <div ng-repeat="listing in value">          
-            {{listing.name}} -> {{listing.city}}
-            <div ng-show="listing.featured">
-              featured
-            </div>
-            <span>
-                <a href="#/listings/{{$index}}">Listing</a>
-            </span>
-          </div>
-        </div>
-        {{test}}
-
-        <form ng-submit="addPost()"
-          style="margin-top:30px;">
-          <h3>Add new listing</h3>
-
-          <div class="form-group">
-            <input type="text"
-              class="form-control"
-              placeholder="Title"
-              ng-model="name"></input>
-          </div>
-          <button type="submit" class="btn btn-primary">Add Listing</button>
-        </form>
-    </script>  
-
-
-
-    <script type="text/ng-template" id="/listings.html">
-      <div class="page-header">
-        <h3>
-
-          {{listing.name}} 
-          <span ng-show="listing.featured">
-            featured
-          </span>
-        </h3>
-      </div>
-
-      <div ng-repeat="amenity in listing.ameneties">
-        <span class="glyphicon glyphicon-ok"></span>        
-        <span style="font-size:20px; margin-left:10px;">
-          {{amenity}}
-        </span>
-      </div>
-    </script>
 </html>
