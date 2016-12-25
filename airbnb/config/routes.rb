@@ -54,5 +54,6 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   # get 'listings/:id' => 'application#angular'
+  resources :listings, only: [:create, :index, :show]
   root to: 'application#angular'
 end

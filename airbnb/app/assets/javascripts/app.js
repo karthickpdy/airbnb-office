@@ -8,7 +8,12 @@ angular.module('airbnb', ['angular.filter','ui.router','templates'])
         .state('home', {
           url: '/home',
           templateUrl: 'home/_home.html',
-          controller: 'MainCtrl'
+          controller: 'MainCtrl',
+          resolve: {
+            postPromise: ['listings', function(listings){
+              return listings.getAll();
+            }]
+          }
         })
         .state('listings', {
           url: '/listings/{id}',
