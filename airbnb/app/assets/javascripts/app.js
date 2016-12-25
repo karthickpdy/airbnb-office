@@ -18,7 +18,12 @@ angular.module('airbnb', ['angular.filter','ui.router','templates'])
         .state('listings', {
           url: '/listings/{id}',
           templateUrl: 'listings/_listings.html',
-          controller: 'ListingsCtrl'
+          controller: 'ListingsCtrl',
+          resolve: {
+            listing: ['$stateParams', 'listings', function($stateParams, listings) {
+              return listings.get($stateParams.id);
+            }]
+          }
         });
 
       $urlRouterProvider.otherwise('home');

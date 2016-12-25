@@ -1,6 +1,6 @@
-angular.module('airbnb').controller('ListingsCtrl', ['$scope','$stateParams','listings',
-    function($scope, $stateParams, listings){        
+angular.module('airbnb').controller('ListingsCtrl', ['$scope','$stateParams','listings','listing',
+    function($scope, $stateParams, listings,listing){        
       debugger
-        $scope.listing = listings.listings[$stateParams.id];
+        $scope.listing = listing;
     }]
 );

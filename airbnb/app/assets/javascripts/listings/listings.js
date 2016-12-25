@@ -1,5 +1,8 @@
 angular.module('airbnb').factory('listings', ['$http',function($http){
-  var o = {};
+  var o = {
+    listings: []
+  };
+
   o.getAll = function() {
     return $http.get('/listings.json').then(function(data){
       debugger
@@ -8,9 +11,15 @@ angular.module('airbnb').factory('listings', ['$http',function($http){
   };
 
   o.create = function(listing) {
-    return $http.post('/listings.json', listing).then(function(data){
+    return $http.post('/listings.json', angular.toJson(listing)).then(function(data){
       debugger
       o.listings.push(data.data);
+    });
+  };
+
+  o.get = function(id) {
+    return $http.get('/listings/' + id + '.json').then(function(res){
+      return res.data;
     });
   };
 
